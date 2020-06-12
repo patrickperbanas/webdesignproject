@@ -1,3 +1,29 @@
+# Branching Rules
+bakal dibuat per modul, dimana tiap modul akan mempunyai tim, 
+tiap tim pada modul tersebut melakukan branching lagi untuk tiap yang akan dikerjakannya, 
+dengan penamaan branch **<username/keterangan umum dari pekerjaan>**, 
+hal ini untuk memudahkan menanyakan perubahan yang dilakkukan kepada yang bersangkutan untuk menghindari solving conflict yang merugikan
+untuk menyatukan tugas tiap tiap modul ke master akan dilakukan Pull Request yang akan di review bersama (kita pilih reviewernya)
+untuk menyatukan tuigas tiap anggota modul akan diatur oleh tim modul tersebut.
+
+# Commit Rules
+tiap melakukan commit, diharapkan memiliki keterangan detail yang cukup jelas
+hal ini untuk mempermudah dalam mencari informasi jika ada kerjaan yang berkaitan
+contoh message:
+feat: fungsi simpan
+
+type:
+feat: (new feature for the user, not a new feature for build script)
+fix: (bug fix for the user, not a fix to a build script)
+docs: (changes to the documentation)
+style: (formatting, missing semi colons, etc; no production code change)
+refactor: (refactoring production code, eg. renaming a variable)
+test: (adding missing tests, refactoring tests; no production code change)
+chore: (updating grunt tasks etc; no production code change)
+
+bisa di baca di https://www.conventionalcommits.org/en/v1.0.0-beta.2/
+
+
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
