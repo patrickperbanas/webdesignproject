@@ -14,4 +14,20 @@ class ProfilModel extends Model
     {
         return $this->db->table('profile')->insert($data);
     }
+
+    public function edit_profile($id_profile)
+    {
+        return $this->db->table('profile')->where('id_profile', $id_profile)->get()->getRowArray();
+    }
+
+    public function update_profile($data, $id_profile)
+    {
+        return $this->db->table('profile')->update($data,array('id_profile' => $id_profile));
+    }
+
+    public function delete_profile($id_profile)
+    {
+        return $this->db->table('profile')->delete(array('id_profile' => $id_profile));
+    }
+
 }

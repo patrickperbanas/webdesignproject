@@ -86,6 +86,37 @@ class Home extends BaseController
 		return redirect()->to(base_url('home/profil'));
 	}
 
+	public function edit_profile($id_profile)
+	{
+		$data= [
+			'title' => 'Edit Data Profile',
+			'profil' => $this->ProfilModel->edit_profile($id_profile),
+			'isi' => 'v_edit_profile',
+		];
+		echo view('layout/v_wrapper', $data);
+	}
 
+	public function update_profile($id_profile)
+	{
+		$data= [
+			'nik' => $this->request->getPost('nik'),
+			'nama' => $this->request->getPost('nama'),
+			'alamat' => $this->request->getPost('alamat'),
+			'tgl_lahir' => $this->request->getPost('tgl_lahir'),
+			'jabatan' => $this->request->getPost('jabatan'),
+			'kuota_cuti' => $this->request->getPost('kuota_cuti'),
+			'history_perjalanan' => $this->request->getPost('history_perjalanan'),
+		];
+		$this->ProfilModel->update_profile($data, $id_profile);
+		session()->setFlashData('success', 'Data Berhasil Diupdate !!!');
+		return redirect()->to(base_url('home/profil'));
+	}
+
+	public function delete_profile($id_profile)
+	{
+		$this->ProfilModel->delete_profile($id_profile);
+		session()->setFlashData('success', 'Data Berhasil Dihapus !!!');
+		return redirect()->to(base_url('home/profil'));
+	}
 
 }

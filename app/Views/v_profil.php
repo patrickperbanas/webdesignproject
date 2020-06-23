@@ -36,8 +36,8 @@
                 <td><?= $value['kuota_cuti']; ?></td>
                 <td><?= $value['history_perjalanan']; ?></td>
                 <td>
-                    <a href="" class="btn btn-warning">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <a href="<?= base_url('home/edit_profile/'.$value['id_profile']) ?>" class="btn btn-warning">Edit</a>
+                    <a href="<?= base_url('home/delete_profile/'.$value['id_profile']) ?>" class="btn btn-danger" onClick="return confirm('Apakah Ingin Hapus Data')">Delete</a>
                 </td>
             </tr>
         <?php } ?>
