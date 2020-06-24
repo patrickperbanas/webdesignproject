@@ -7,7 +7,17 @@
           <img src="<?= base_url() ?>/template/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?= session()->get('username') ?>/
+          <?php if(session()->get('role')==1) {
+            echo 'Admin';
+          }
+          if(session()->get('role')==2) {
+            echo 'Manager';
+          }
+          if(session()->get('role')==3) {
+            echo 'Staff';
+          }
+          ?></a>
         </div>
       </div>
 
@@ -39,6 +49,7 @@
               </li>
             </ul>
           </li>
+         
           <li class="nav-item">
             <a href="<?= base_url('home/profil') ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -46,7 +57,9 @@
                 Profil
               </p>
             </a>
-            <li class="nav-item">
+          </li>
+       
+          <li class="nav-item">
             <a href="<?= base_url('home/perjalananBisnis') ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -55,7 +68,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('home/cuti') ?>" class="nav-link">
+            <a href="<?= base_url('izin/cuti') ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Cuti
@@ -70,7 +83,25 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= base_url('login/logout') ?>" class="nav-link">
+              <i class="nav-icon fas fa-sign"></i>
+              <p>
+               Logout
+              </p>
+            </a>
           </li>
+          <?php
+          if(session()->get('role')==1) { ?>
+          <li class="nav-item">
+            <a href="<?= base_url('login/register') ?>" class="nav-link">
+              <i class="nav-icon fas fa-sign"></i>
+              <p>
+               Register
+              </p>
+            </a>
+          </li>
+          <?php } ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
