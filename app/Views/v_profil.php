@@ -1,6 +1,8 @@
 <div class="col-sm-12">
-<a href="<?= base_url('home/tambah_profil') ?>" class="btn btn-primary">Tambah Data</a>
-
+<?php
+    if(session()->get('role')==1) { ?>
+        <a href="<?= base_url('home/tambah_profil') ?>" class="btn btn-primary">Tambah Data</a>
+<?php } ?>
 <br></br>
 <?php
     if(!empty(session()->getFlashdata('success'))) {  ?>

@@ -14,6 +14,10 @@ class Home extends BaseController
 
 	public function index()
 	{
+		if (session()->get('username')=='') {
+			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
+			return redirect()->to(base_url('login'));
+		}
 		$data= [
 			'title' => 'Judul Home',
 			'isi' => 'v_home',
@@ -52,6 +56,12 @@ class Home extends BaseController
 
 	public function profil()
 	{
+		
+		if (session()->get('username')=='') {
+			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
+			return redirect()->to(base_url('login'));
+		}
+
 		$data= [
 			'title' => 'Judul Menu Profil',
 			'profil' => $this->ProfilModel->get_profil(),
@@ -62,6 +72,12 @@ class Home extends BaseController
 
 	public function tambah_profil()
 	{
+		
+		if (session()->get('username')=='') {
+			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
+			return redirect()->to(base_url('login'));
+		}
+
 		$data= [
 			'title' => 'Form Pengisian Data Profil',
 			'profil' => $this->ProfilModel->get_profil(),
@@ -88,6 +104,12 @@ class Home extends BaseController
 
 	public function edit_profile($id_profile)
 	{
+		
+		if (session()->get('username')=='') {
+			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
+			return redirect()->to(base_url('login'));
+		}	
+
 		$data= [
 			'title' => 'Edit Data Profile',
 			'profil' => $this->ProfilModel->edit_profile($id_profile),
