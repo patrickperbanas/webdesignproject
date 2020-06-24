@@ -26,7 +26,7 @@ class User extends Migration
 				'constraint'     => '100',
 			],
 			'role' => [
-				'type'           => 'VARCHAR',
+				'type'           => 'INT',
 				'constraint'     => '100',
 			],
 		]);
