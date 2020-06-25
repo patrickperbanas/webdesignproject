@@ -22,7 +22,6 @@
                 <th>Alamat</th>
                 <th>Jabatan</th>
                 <th>Kuota Cuti</th>
-                <th>Histori Perjalanan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -36,10 +35,15 @@
                 <td><?= $value['alamat']; ?></td>
                 <td><?= $value['jabatan']; ?></td>
                 <td><?= $value['kuota_cuti']; ?></td>
-                <td><?= $value['history_perjalanan']; ?></td>
                 <td>
-                    <a href="<?= base_url('home/edit_profile/'.$value['id_profile']) ?>" class="btn btn-warning">Edit</a>
-                    <a href="<?= base_url('home/delete_profile/'.$value['id_profile']) ?>" class="btn btn-danger" onClick="return confirm('Apakah Ingin Hapus Data')">Delete</a>
+                <?php if(session()->get('role')!=1) {if($value['nik'] == session()->get('nik')){?>
+                    <a href="<?= base_url('home/edit_profile/'.$value['id_profile']) ?>" class="btn btn-primary">Edit</a>
+                <?php }else{?>
+                    <a href="<?= base_url('home/view_profile/'.$value['id_profile']) ?>" class="btn btn-warning">View</a>
+                <?php }}else{?>
+                    <a href="<?= base_url('home/edit_profile/'.$value['id_profile']) ?>" class="btn btn-primary">Edit</a>
+                    <a href="<?= base_url('home/view_profile/'.$value['id_profile']) ?>" class="btn btn-warning">View</a>
+                <?php }?>
                 </td>
             </tr>
         <?php } ?>

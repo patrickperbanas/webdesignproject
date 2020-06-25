@@ -2,6 +2,7 @@
 
 use CodeIgniter\Controller;
 use App\Models\LoginModel;
+use App\Models\ProfilModel;
 use App\Controllers\Home;
 
 class Login extends BaseController
@@ -11,6 +12,7 @@ class Login extends BaseController
 	{
         helper('form');
         $this->LoginModel = new LoginModel();
+        $this->ProfilModel = new ProfilModel();
     }
     
 	public function index()
@@ -22,11 +24,15 @@ class Login extends BaseController
     {
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
+        
+        
+        $cek = $this->LoginModel->cek_login($username, $password_hash);
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $passIsValid = password_verify($password, $cek['password']);
+        
+        
 
-        $cek = $this->LoginModel->cek_login($username, $password);
-
-
-        if (!empty($cek)) {
+        if ($passIsValid == true) {
             session()->set('username', $cek['username']);
             session()->set('nik', $cek['nik']);
             session()->set('role', $cek['role']);
@@ -58,7 +64,6 @@ class Login extends BaseController
     {   
         $validation =  \Config\Services::validation();
 
-
         $data = [
 			'nik' => $this->request->getPost('nik'),
 			'username' => $this->request->getPost('username'),
@@ -75,11 +80,16 @@ class Login extends BaseController
                 'nik'         => $this->request->getPost('nik'),
                 'username'          => $this->request->getPost('username'),
                 'password'      => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                'role'         => 1
+                'role'         => $this->request->getPost('role'),
             ];
 
             $simpan = $this->LoginModel->insert_user($datalagi);
- 
+            $data_profil = [
+                "nik"=> $this->request->getPost('nik'),
+                "Jabatan"=> $this->request->getPost('role') == 1?"Admin" : $this->request->getPost('role') == 2? "Manager": "Staff",
+                "kuota_cuti"=>$this->request->getPost('role') == 1?15 : $this->request->getPost('role') == 2? 20: 12,
+            ];
+            $simpan_profile = $this->ProfilModel->insert_profile($data_profil);
             // $this->LoginModel->insert_user($data);
             if($simpan) {
                 session()->setFlashdata('success', 'Register Berhasil');

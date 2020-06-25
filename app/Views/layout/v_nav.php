@@ -45,11 +45,7 @@
           </li>
        
           <li class="nav-item">
-<<<<<<< HEAD
             <a href="<?= base_url('izin/perjalanan_bisnis') ?>" class="nav-link">
-=======
-            <a href="<?= base_url('home/perjalananBisnis') ?>" class="nav-link">
->>>>>>> e5ed45f7952c7a23c87c55a8d8d2a7f384f25835
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Perjalanan Bisinis

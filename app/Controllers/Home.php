@@ -114,6 +114,24 @@ class Home extends BaseController
 
 		$data= [
 			'title' => 'Edit Data Profile',
+			'action'=> 'edit',
+			'profil' => $this->ProfilModel->edit_profile($id_profile),
+			'isi' => 'v_edit_profile',
+		];
+		echo view('layout/v_wrapper', $data);
+	}
+
+	public function view_profile($id_profile)
+	{
+		
+		if (session()->get('username')=='') {
+			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
+			return redirect()->to(base_url('login'));
+		}	
+
+		$data= [
+			'title' => 'Edit Data Profile',
+			'action'=> 'view',
 			'profil' => $this->ProfilModel->edit_profile($id_profile),
 			'isi' => 'v_edit_profile',
 		];

@@ -48,7 +48,7 @@ class Validation
 
 	 // validasi register
 	public $authregister = [
-		'nik'              => 'required|alpha_numeric_space|min_length[3]|max_length[35]',
+		'nik'              => 'required|alpha_numeric_space|min_length[3]|max_length[35]|is_unique[user.nik]',
 		'username'          => 'required|alpha_numeric|is_unique[user.username]|min_length[8]|max_length[35]',
 		'password'          => 'required|string|min_length[8]|max_length[35]',
 		'confirm_password'  => 'required|string|matches[password]|min_length[8]|max_length[35]',
@@ -64,7 +64,7 @@ class Validation
 			'required'      => 'Username wajib diisi',
 			'alpha_numeric' => 'Username hanya boleh berisi huruf dan angka',
 			'is_unique'     => 'Username sudah terdaftar',
-			'min_length'    => 'Username minimal 3 karakter',
+			'min_length'    => 'Username minimal 8 karakter',
 			'max_length'    => 'Username maksimal 35 karakter'
 		],
 		'password'=> [

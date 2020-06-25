@@ -10,7 +10,7 @@ class LoginModel extends Model
     public function cek_login($username, $password)
     {
         return $this->db->table('user')
-        ->where(array('username' => $username, 'password'=>$password))
+        ->where(array('username' => $username))
         ->get()->getRowArray();
     }    
 

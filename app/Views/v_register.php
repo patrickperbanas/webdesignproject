@@ -83,6 +83,18 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+        <select class="form-control" name="role">
+            <option value="1" selected>Admin</option>
+            <option value="2">Manager</option>
+            <option value="3">Staff</option>
+        </select>  
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
