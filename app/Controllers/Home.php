@@ -14,6 +14,7 @@ class Home extends BaseController
 
 	public function index()
 	{
+		// Proteksi Halaman
 		if (session()->get('username')=='') {
 			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
 			return redirect()->to(base_url('login'));
@@ -97,6 +98,7 @@ class Home extends BaseController
 			'kuota_cuti' => $this->request->getPost('kuota_cuti'),
 			'history_perjalanan' => $this->request->getPost('history_perjalanan'),
 		];
+
 		$this->ProfilModel->insert_profile($data);
 		session()->setFlashData('success', 'Data Berhasil Ditambahkan');
 		return redirect()->to(base_url('home/profil'));

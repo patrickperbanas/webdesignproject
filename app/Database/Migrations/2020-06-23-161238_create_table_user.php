@@ -25,6 +25,10 @@ class CreateTableUser extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
+			'confirm_password' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '100',
+			],
 			'role' => [
 				'type'           => 'INT',
 				'constraint'     => '100',
