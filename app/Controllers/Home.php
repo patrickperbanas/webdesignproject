@@ -19,7 +19,6 @@ class Home extends BaseController
 			session()->setFlashdata('gagal', 'Anda Belum Login !!!');
 			return redirect()->to(base_url('login'));
 		}
-
 		$data= [
 			'title' => 'Judul Home',
 			'isi' => 'v_home',

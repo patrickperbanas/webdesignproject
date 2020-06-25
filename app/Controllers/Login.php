@@ -20,7 +20,6 @@ class Login extends BaseController
     
     public function cek_login()
     {
-
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 

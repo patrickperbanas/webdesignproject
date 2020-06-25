@@ -31,23 +31,8 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                Home
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sub Menu 1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sub Menu 2</p>
-                </a>
-              </li>
-            </ul>
           </li>
          
           <li class="nav-item">
@@ -60,7 +45,11 @@
           </li>
        
           <li class="nav-item">
+<<<<<<< HEAD
+            <a href="<?= base_url('izin/perjalanan_bisnis') ?>" class="nav-link">
+=======
             <a href="<?= base_url('home/perjalananBisnis') ?>" class="nav-link">
+>>>>>>> e5ed45f7952c7a23c87c55a8d8d2a7f384f25835
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Perjalanan Bisinis
@@ -76,13 +65,24 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('home/laporan') ?>" class="nav-link">
+            <a href="<?= base_url('laporan/all_laporan') ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Laporan
               </p>
             </a>
           </li>
+          <?php
+          if(session()->get('role')==2) { ?>
+          <li class="nav-item">
+            <a href="<?= base_url('approval/list') ?>" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Approval
+              </p>
+            </a>
+          </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="<?= base_url('login/logout') ?>" class="nav-link">
               <i class="nav-icon fas fa-sign"></i>
