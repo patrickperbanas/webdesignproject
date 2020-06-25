@@ -1,6 +1,9 @@
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Tambah Data</h3>
+        <?php
+          if(session()->get('role')==1) { ?>
+            <h3 class="card-title">Tambah Data</h3>
+        <?php } ?>
         </div>
         <!-- /.card-header -->
         <!-- form start -->

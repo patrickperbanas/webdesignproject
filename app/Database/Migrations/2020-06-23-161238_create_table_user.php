@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class User extends Migration
+class CreateTableUser extends Migration
 {
 	public function up()
 	{
@@ -22,6 +22,10 @@ class User extends Migration
 				'constraint'     => '100',
 			],
 			'password' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '100',
+			],
+			'confirm_password' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
