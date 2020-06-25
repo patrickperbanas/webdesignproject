@@ -1,13 +1,10 @@
 <div class="col-sm-12">
-<a href="<?= base_url('home/tambah_profil') ?>" class="btn btn-primary">Tambah Data</a>
 
-<br></br>
 <?php
     if(!empty(session()->getFlashdata('success'))) {  ?>
         <div class="alert alert-success">
             <?= session()->getFlashdata('success'); ?>
         </div>
-    }
 <?php } ?>
 
     <table id="example1" class="table table-bordered table-striped">
@@ -19,26 +16,22 @@
                 <th>Tanggal Awal</th>
                 <th>Tanggal Akhir</th>
                 <th>Status</th>
-                <th>Histori Perjalanan</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-        <?php $no=1; foreach($cuti as $key => $value) { ?>
+        <?php $no=1; foreach($izin as $key => $value) { 
+            if($value['status'] == 'Waiting Approval') {?>
             <tr>
                 <td><?= $value['id_izin']; ?></td>
                 <td><?= $value['nik']; ?></td>
-                <td><?= $value['izin_type']; ?></td>
+                <td><?= $value['izin_type'] == 1 ? 'Cuti':'Perjalanan Bisnis'; ?></td>
                 <td><?= $value['start_date']; ?></td>
                 <td><?= $value['end_date']; ?></td>
                 <td><?= $value['status']; ?></td>
-                <td><?= $value['history_perjalanan']; ?></td>
-                <td>
-                    <a href="" class="btn btn-warning">Edit</a>
-                    <a href="" class="btn btn-danger" onClick="return confirm('Apakah Ingin Hapus Data')">Delete</a>
-                </td>
+                <td><a href="<?= base_url('approval/view/'.$value['id_izin']) ?>" class="btn btn-warning">View</a></td>
             </tr>
-        <?php } ?>
+        <?php } }?>
         </tbody>
     <table>
 
