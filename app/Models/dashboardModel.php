@@ -11,20 +11,12 @@ class dashboardModel extends Model
     {
         return $this->db->table("profile")->countAll();
     }
- 
-    //hitung total data izin
-    public function getCountCuti()
-    {
-        return $this->db->table('izin')->where('izin_type', 1)->countAll();
-    }
-
-    // hitung total data perjalanan bisnis
-    public function getCountPerjalanan()
-    {
-        return $this->db->table('izin')->where('izin_type' == 2)->countAll();
-    }  
     
- 
+    public function getCountIzin($type){
+        $result = $this->db->table('izin')->where('izin_type', $type)->get()->getResultArray();
+        return count($result);   
+    }
+    
     // hitung total data pada user
     public function getCountUser()
     {

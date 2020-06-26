@@ -29,7 +29,7 @@ var areaChart = new Chart(chart, {
     labels: <?php echo json_encode($month); ?>,
     datasets: [
       {
-        label: "Grafik Penjualan",
+        label: "Grafik izin",
         data: <?php echo json_encode($total); ?>,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

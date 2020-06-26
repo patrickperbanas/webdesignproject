@@ -86,8 +86,8 @@ class Login extends BaseController
             $simpan = $this->LoginModel->insert_user($datalagi);
             $data_profil = [
                 "nik"=> $this->request->getPost('nik'),
-                // "Jabatan"=> $this->request->getPost('role') == 1?"Admin" : $this->request->getPost('role') == 2? "Manager": "Staff",
-                // "kuota_cuti"=>$this->request->getPost('role') == 1?15 : $this->request->getPost('role') == 2? 20: 12,
+                "Jabatan"=> $this->request->getPost('role') == 1?"Admin" : $this->request->getPost('role') == 2? "Manager": "Staff",
+                "kuota_cuti"=>$this->request->getPost('role') == 1?15 : $this->request->getPost('role') == 2? 20: 12,
             ];
             $simpan_profile = $this->ProfilModel->insert_profile($data_profil);
             // $this->LoginModel->insert_user($data);
