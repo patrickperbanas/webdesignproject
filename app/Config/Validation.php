@@ -37,7 +37,7 @@ class Validation
 	];
 	 
 	public $authlogin_errors = [
-		'username'=> [
+		'username'=> [	
 			'required'  => 'Username wajib diisi.',
 			'valid_email'   => 'Username tidak valid'
 		],
@@ -46,18 +46,95 @@ class Validation
 		]
 	];
 
-	 // validasi register
+	 // validasi Input Data Profile
+	public $profile = [
+		'nik' => 'required|is_unique[profile.nik]|string|min_length[3]|max_length[35]',
+		'nama' => 'required',
+		'tgl_lahir' => 'required',
+		'alamat' => 'required',
+		'jabatan' => 'required',
+		'kuota_cuti' => 'required|numeric',
+		'history_perjalanan' => 'required',
+	];
+	 
+	public $profile_errors = [
+		'nik'=> [
+			'required'      => 'NIK wajib diisi',
+			'is_unique'     => 'NIK sudah terdaftar',
+			'string'        => 'NIK hanya boleh berisi huruf, angka, spasi dan karakter lain',
+		],
+		'nama'=> [
+			'required'  => 'Nama wajib diisi.'
+		],
+		'tgl_lahir'=> [
+			'required'  => 'Tanggal Lahir wajib diisi.'
+		],
+		'alamat'=> [
+			'required'  => 'Alamat wajib diisi.'
+		],
+		'jabatan'=> [
+			'required'  => 'Jabatan wajib diisi.'
+		],
+		'kuota_cuti'=> [
+			'required'  => 'Kuota Cuti wajib diisi.',
+			'numeric' 	=> 'Kuota Cuti hanya boleh berisi angka'
+		],
+		'history_perjalanan'=> [
+			'required'  => 'Histori Perjalanan wajib diisi.'
+		]
+
+	];
+
+	// validasi Edit Data Profile
+	public $editprofile = [
+		'nik' => 'string|min_length[3]|max_length[35]',
+		'nama' => 'required',
+		'tgl_lahir' => 'required',
+		'alamat' => 'required',
+		'jabatan' => 'required',
+		'kuota_cuti' => 'required|numeric',
+		'history_perjalanan' => 'required',
+	];
+	 
+	public $editprofile_errors = [
+		'nik'=> [
+			'string' => 'NIK hanya boleh berisi huruf, angka, spasi dan karakter lain',
+			'min_length'    => 'Username minimal 3 karakter',
+			'max_length'    => 'Username maksimal 35 karakter'
+		],
+		'nama'=> [
+			'required'  => 'Nama wajib diisi.'
+		],
+		'tgl_lahir'=> [
+			'required'  => 'Tanggal Lahir wajib diisi.'
+		],
+		'alamat'=> [
+			'required'  => 'Alamat wajib diisi.'
+		],
+		'jabatan'=> [
+			'required'  => 'Jabatan wajib diisi.'
+		],
+		'kuota_cuti'=> [
+			'required'  => 'Kuota Cuti wajib diisi.',
+			'numeric' 	=> 'Kuota Cuti hanya boleh berisi angka'
+		],
+		'history_perjalanan'=> [
+			'required'  => 'Histori Perjalanan wajib diisi.'
+		]
+
+	];
+
+	// validasi register
 	public $authregister = [
-		'nik'              => 'required|alpha_numeric_space|min_length[3]|max_length[35]|is_unique[user.nik]',
+		'nik'              => 'required|alpha_numeric_space|min_length[3]|max_length[35]',
 		'username'          => 'required|alpha_numeric|is_unique[user.username]|min_length[8]|max_length[35]',
 		'password'          => 'required|string|min_length[8]|max_length[35]',
 		'confirm_password'  => 'required|string|matches[password]|min_length[8]|max_length[35]',
 	];
-	 
+
 	public $authregister_errors = [
 		'nik'=> [
 			'required'      => 'NIK wajib diisi',
-			'valid_email'   => 'NIK tidak valid',
 			'is_unique'     => 'NIK sudah terdaftar'
 		],
 		'username'=> [
@@ -81,8 +158,4 @@ class Validation
 			'max_length'    => 'Konfirmasi password maksimal 35 karakter'
 		]
 	];
-
-	//--------------------------------------------------------------------
-	// Rules
-	//--------------------------------------------------------------------
 }

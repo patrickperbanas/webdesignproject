@@ -25,6 +25,7 @@ class Izin extends BaseController
 		
 		$data= [
 			'title' => 'Menu Cuti',
+			'subTitle' => 'Cuti',
 			'type' => 1,
 			'cuti' => $this->izinModel->get_all_izin_by_type_and_nik(1,session()->get('nik')),
 			'isi' => 'v_izin',
@@ -40,6 +41,7 @@ class Izin extends BaseController
 		}
 		$data= [
 			'title' => 'Menu Perjalanan Bisnis',
+			'subTitle' => 'Perjalanan Bisnis',
 			'type' => 2,
 			'cuti' => $this->izinModel->get_all_izin_by_type_and_nik(2,session()->get('nik')),
 			'isi' => 'v_izin',
@@ -56,6 +58,7 @@ class Izin extends BaseController
 		
 		$data= [
 			'title' =>$type == 1? 'Form Pengajuan Cuti' : 'Form Pengajuan Perjalanan Bisnis',
+			'subTitle' => $type == 1? 'Tambah Cuti' : 'Tambah Perjalanan Bisnis',
 			'type' => $type,
 			'kuota_cuti' => $kuota_cuti,	 
 			'cuti' => $this->izinModel->get_perjalanan_bisnis(),
@@ -166,6 +169,7 @@ class Izin extends BaseController
 		
 		$data= [
 			'title' =>$type == 1? 'Form Pengajuan Cuti' : 'Form Pengajuan Perjalanan Bisnis',
+			'subTitle' => $type == 1? 'Edit Cuti' : 'Edit Perjalanan Bisnis',
 			'type' => $type,
 			'kuota_cuti' => $kuota_cuti,	 
 			'izin' => $this->izinModel->get_izin_by_id($id),
