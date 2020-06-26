@@ -82,6 +82,43 @@ class Validation
 		]
 	];
 
+	public $authcuti = [
+		'start_date'=>'required',
+		'end_date' =>'required',	
+	];
+
+	public $authcuti_errors = [
+		'start_date'=> [
+			'required'      => 'Start Date Harus Diisi',
+		],
+		'end_date'=> [
+			'required'      => 'End Date Harus Diisi',
+		],
+	];
+
+	public $authperjalananbisnis = [
+		'start_date'=>'required',
+		'end_date' =>'required',
+		'estimasi_biaya'=>'required|numeric|min_length[3]',	
+		'keterangan'=>'required',
+	];
+
+	public $authperjalananbisnis_errors = [
+		'start_date'=> [
+			'required'      => 'Start Date Harus Diisi',
+		],
+		'end_date'=> [
+			'required'      => 'End Date Harus Diisi',
+		],
+		'estimasi_biaya'=>[
+			'required'=> "Biaya harus diisi",
+			'numeric'=> "Biaya hanya bisa numeric",
+			'min_length'=> "Biaya minimal 3 digit",
+		],	
+		'keterangan'=>[
+			'required' => "keterangan harap diisi"
+		],
+	];
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------

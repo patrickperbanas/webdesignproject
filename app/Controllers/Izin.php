@@ -58,18 +58,28 @@ class Izin extends BaseController
 			'title' =>$type == 1? 'Form Pengajuan Cuti' : 'Form Pengajuan Perjalanan Bisnis',
 			'type' => $type,
 			'kuota_cuti' => $kuota_cuti,	 
-			'cuti' => $this->izinModel->get_perjalanan_bisnis(),
+			'izin' => $this->izinModel->get_perjalanan_bisnis(),
 			'isi' => 'v_form_izin',
 		];
 		echo view('layout/v_wrapper', $data);
 	}
 
 	public function simpan(){
+		$validation =  \Config\Services::validation();
 		$type = $_GET["type"];
 		$nik = session()->get('nik');
 		$profil = $this->profilModel->get_profile_by_nik($nik);
 
 		if($type == 1) {
+			$formData = [
+				'start_date' => $this->request->getPost('start_date'),
+				'end_date' => $this->request->getPost('end_date'),
+			];
+			if($validation->run($formData, 'authcuti') == FALSE){
+				session()->setFlashdata('inputs', $this->request->getPost());
+				session()->setFlashdata('errors', $validation->getErrors());
+				return redirect()->to(base_url('izin/tambah?type='.$type));
+			}
 			if($this->request->getPost('id') == 0){
 				$length = $this->request->getPost('length');
 				$profil['kuota_cuti'] -= $length;
@@ -121,6 +131,17 @@ class Izin extends BaseController
 			return redirect()->to(base_url('izin/cuti'));
 		}
 		else {
+			$formData = [
+				'start_date' => $this->request->getPost('start_date'),
+				'end_date' => $this->request->getPost('end_date'),
+				'estimasi_biaya'=>$this->request->getPost('est_biaya'),
+				'keterangan'=>$this->request->getPost('keterangan'),
+			];
+			if($validation->run($formData, 'authperjalananbisnis') == FALSE){
+				session()->setFlashdata('inputs', $this->request->getPost());
+				session()->setFlashdata('errors', $validation->getErrors());
+				return redirect()->to(base_url('izin/tambah?type='.$type));
+			}
 			if($this->request->getPost('id') == 0){
 				$data= [
 					'nik' => session()->get('nik'),

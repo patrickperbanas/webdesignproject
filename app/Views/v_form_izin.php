@@ -1,4 +1,17 @@
 <div class="card card-primary">
+<?php
+    $inputs = session()->getFlashdata('inputs');
+    $errors = session()->getFlashdata('errors');
+    if(!empty($errors)) { ?>
+      <div class="alert alert-danger">
+       Ada Kesalahaan Saat Input Data Yaitu :
+        <ul>
+          <?php foreach($errors as $error) {?>
+            <li><?= esc($error) ?></li>
+          <?php } ?>
+        </ul>
+      </div>
+    <?php } ?>
     <div class="card-header">
             <h3 class="card-title">Tambah Data</h3>
             <?php
@@ -12,23 +25,23 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Start Date</label>
-                    <input type="date" name="start_date" class="form-control datetimepicker-input" min="" value="<?= $izin['start_date'] == null ? '':$izin['start_date']?>" id="sdate" required />
+                    <input type="date" name="start_date" class="form-control datetimepicker-input" min="" value="<?= $izin['start_date'] == null ? '':$izin['start_date']?>" id="sdate"/>
                 </div>
 
                 <div class="form-group">
                     <label>End Date</label>
-                    <input type="date" name="end_date" class="form-control datetimepicker-input" id="edate" value="<?= $izin['end_date'] == null ? '':$izin['end_date']?>" readonly required />
+                    <input type="date" name="end_date" class="form-control datetimepicker-input" id="edate" value="<?= $izin['end_date'] == null ? '':$izin['end_date']?>" readonly/>
                 </div>
                 <?php
                     if($type == 2) { ?>
                         <div class="form-group">
                             <label>Estimasi Biaya</label>
-                            <input name="est_biaya" type="number" class="form-control" placeholder="Masukkan Estimasi Biaya" value="<?= $izin['estimasi_biaya'] == null ? '':$izin['estimasi_biaya']?>" required>
+                            <input name="est_biaya" type="number" class="form-control" placeholder="Masukkan Estimasi Biaya" value="<?= $izin['estimasi_biaya'] == null ? '':$izin['estimasi_biaya']?>">
                         </div>
 
                         <div class="form-group">
                             <label>Keterangan</label>
-                            <textarea name="keterangan" class="form-control" rows="3" placeholder="Masukkan Keterangan" required><?= $izin['history_perjalanan'] == null ? '':$izin['history_perjalanan']?></textarea>
+                            <textarea name="keterangan" class="form-control" rows="3" placeholder="Masukkan Keterangan"><?= $izin['history_perjalanan'] == null ? '':$izin['history_perjalanan']?></textarea>
                         </div>
                     <?php }?>    
 
