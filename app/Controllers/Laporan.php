@@ -22,6 +22,7 @@ class Laporan extends BaseController
 		if (session()->get('role')==1 || session()->get('role')==2){
 			$data= [
 				'title' => 'Laporan Semua Pegawai',
+				'subTitle' => 'Laporan',
 				'izin' => $this->izinModel->get_all_izin(),
 				'isi' => 'v_laporan',
 			];
@@ -29,6 +30,7 @@ class Laporan extends BaseController
 		}else{
 			$data= [
 				'title' => 'Laporan Semua Izin Anda',
+				'subTitle' => 'Laporan',
 				'izin' => $this->izinModel->get_all_izin_by_nik(session()->get('nik')),
 				'isi' => 'v_laporan',
 			];
